@@ -1,0 +1,176 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.nav{
+  display:flex;
+  justify-content: space-between;
+  border:1px black solid;
+  background: olivedrab;
+  padding: 2%;
+  font-size: 1.1rem;
+  /* margin-bottom:2%; */
+  
+  
+}
+.linkDiv{
+  list-style: none;
+  display:flex;
+  flex-direction: column;  
+}
+.appLink{  
+  padding: 6px;
+  color:white;
+  text-decoration: none;
+}
+
+
+.dashDiv{
+  background-image: linear-gradient(
+      rgba(43, 42, 42, 0.2),
+      rgba(43, 42, 32, 0.2)
+    ),
+
+    url("./components/image/foodselling.jpg");
+   
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-height: 80vh;
+  background-position: unset;
+  display:flex;
+  justify-content: space-between;
+  flex-direction: column;  
+}
+
+.dashLink{
+width:20%;
+background: rgb(209, 180, 150);
+padding:2%;
+margin:2%;
+border-radius: 8px;
+font-size:1.2rem;
+margin-left:40%;
+border: black 2px solid;
+text-decoration: none;
+color:black;
+}
+
+.navDiv{
+  display: flex;
+  flex-direction: row;
+  width:20%;
+  margin: 0 auto;
+  /* background: rgb(255, 223, 193); */
+  padding: 1%;
+  /* border: black 1px solid; */
+  border-radius: 10px;
+  font-size:1.2rem
+}
+.user-link{
+  padding: 6px;
+  color:black;
+  text-decoration: none;
+  margin:0 auto 3% auto;
+  padding:2%;
+  border: black 1px solid;
+  width: 35%;
+  border-radius: 8px;
+  background: rgb(255, 223, 193); 
+}
+button{
+  background: #ecf7e7;
+  width: 8%;
+  margin:1%;
+  padding:0.6%;
+  border-radius:10px;
+}
+
+button:hover{
+  background:rgb(192, 78, 12) ;
+  color:white;
+  border-radius: 10px;
+}
+
+.crafts{
+  background-image: linear-gradient(
+    rgba(43, 42, 42, 0.2),
+    rgba(43, 42, 32, 0.2)
+  ),
+
+  url("./components/image/crafts1.jpeg");
+ 
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100%;
+min-height: 80vh;
+background-position: unset;
+}
+
+.home{
+  background-image: linear-gradient(
+    rgba(23, 20, 40, 0.2),
+    rgba(43, 42, 32, 0.3)
+  ),
+  url("./components/image/Pineapple_women_farmers_rwanda.jpg");
+ 
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100%;
+min-height: 80vh;
+background-position: unset;
+
+}
+.homeSlogan{
+width:83%;
+background-image: linear-gradient(
+    rgba(43, 42, 42, 0.2),
+    rgba(43, 42, 32, 0.1)
+  ),
+
+  url("./components/image/wangari-section-banner.jpg"); 
+background-repeat: no-repeat;
+height: 28vh;
+margin: 0 auto;
+}
+
+.blank{
+height:38vh;
+}
+
