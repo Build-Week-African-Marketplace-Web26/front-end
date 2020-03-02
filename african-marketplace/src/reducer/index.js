@@ -1,23 +1,44 @@
- import {GET, ADD, DELETE} from '../action';
+ import {GET, ADD, UPDATE, DELETE} from '../action';
 
  const initialState = {
-  produceList:[],
-  foodList: [],
-  craftList: [],
-  artifactsList:[],
+  itemsList: [],
   isLoading:false,
   error:false
  }
 
 
  export const reducer = (state = initialState, action)=> {
-     //console.log("I am the action", action)
+     console.log("I am the action", action)
      //console.log("I am the state", state)
      switch(action.type){
         case GET:
-            //  return{
-            //   ...
-            //  }
+             return{
+              ...state,
+              itemList: action.payload,
+              isLoading:true,
+              error: false
+             }
+        case ADD:
+            return{
+                ...state,
+              itemsList: action.payload,
+              isLoading:true,
+              error: false
+            }
+        case UPDATE:
+            return{
+                ...state,
+              itemsList: action.payload,
+              isLoading:true,
+              error: false
+            }
+        case DELETE:
+            return{
+                ...state,
+              itemsList: action.payload,
+              isLoading:true,
+              error: false
+            }
         default:
              return state
 

@@ -3,20 +3,21 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import {Dashboard} from './components/Dashboard';
 import {Home} from './components/Home'
 import {PrivateRoute} from './components/PrivateRoute';
+import {connect} from 'react-redux'
+import {getItems} from './action';
 import {User} from './components/User';
 import {Seller} from './components/Seller';
-
-
 import './App.css';
 
 
-function App() {
+function App({itemsList}) {
   const token = window.localStorage.getItem('token')
   
   const signOut = (e) =>{
  e.preventDefault()
  window.localStorage.removeItem("token")
   }
+  // I am react-2
   return (
     <Router>    
       <div className="App">
@@ -52,4 +53,9 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state)=>{
+  return{
+  itemsList: state.itemsList
+  }
+}
+export default connect(mapStateToProps,{getItems})(App);
