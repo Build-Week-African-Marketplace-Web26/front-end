@@ -48,7 +48,7 @@ const FormikLoginForm = withFormik({
       .email("Email not valid")
       .required("Email is required"),
     password: Yup.string()
-      .min(16, "Password must be 16 characters or longer")
+      .min(8, "Password must be 16 characters or longer")
       .required("Password is required")
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {

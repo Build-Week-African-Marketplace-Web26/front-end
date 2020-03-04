@@ -8,6 +8,26 @@ import {getItems} from './action';
 import {User} from './components/User';
 import {Seller} from './components/Seller';
 import './App.css';
+import styled from 'styled-components'; // ReactI (essien)
+import Footer from '../src/components/Footer'; // ReactI (essien)
+
+// Styled Components - ReactI - ESSIEN
+const TopBar = styled.div`
+  // background: lightskyblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+`
+const ReturnToSite = styled.a`
+  font-weight: 700;
+  width: 20%;
+  font-size: 0.8rem;
+`
+
+const WelcomeHeading = styled.h1`
+  font-size: 1.5rem;
+`
 
 
 function App({itemsList}) {
@@ -21,7 +41,10 @@ function App({itemsList}) {
   return (
     <Router>    
       <div className="App">
-        <h1>Welcome to African Marketplace</h1>
+        <TopBar>
+        <WelcomeHeading>Welcome to African Marketplace</WelcomeHeading>
+        <ReturnToSite href="">Back to Africa Marketplace Site</ReturnToSite>
+        </TopBar>
         <nav className ="nav">
         <div className = "linkDiv">
             <Link className = "appLink"to = '/home'>Home</Link>
@@ -48,6 +71,7 @@ function App({itemsList}) {
           <Route path = '/protected' component = {Dashboard}/>
         </Switch> 
         <Home/>
+        <Footer />
       </div>
     </Router>
   );
