@@ -54,7 +54,7 @@ export const addItem = (item) => (dispatch) => {
 
 export const deleteItem = (item) => (dispatch)=>{
      axiosWithAuth() 
-    .delete(`/posts/${item.id}`,item)
+    .delete(`https://jsonplaceholder.typicode.com/posts/${item.id}`)
     .then(res=>console.log('I am the response from deleted item', res))
     // .then(res => dispatch({type:DELETE, payload:res.data}))
     .catch(err => console.log(err))

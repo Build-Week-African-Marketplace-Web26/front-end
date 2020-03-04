@@ -17,8 +17,8 @@ function App({itemsList}) {
   const signOut = (e) =>{
   e.preventDefault()
   window.localStorage.removeItem("token")
-
   }
+
   // I am react-2
   return (
     <Router>    
@@ -29,7 +29,7 @@ function App({itemsList}) {
             {token && <Link className = "appLink"to = '/home'>Home</Link>}
           </div>
           <div className = "linkDiv">
-            {!token && <Link className = "appLink"to ='/'>Are you a customer?</Link>}
+            {!token && <Link className = "appLink"to ='/user'>Are you a customer?</Link>}
           </div>          
           <div className = "linkDiv">
            {token && <Link className = "appLink"to = '/protected'>Dashboard</Link>}
@@ -38,17 +38,18 @@ function App({itemsList}) {
             {!token && <Link className = "appLink" to = '/seller'>Are you a seller?</Link>}
           </div>
           <div className = "linkDiv">
-           {token && <Link className = "appLink" to = "/" onClick ={signOut}>SignOut</Link>}
+           {token && <Link className = "appLink" to = "/protected" onClick ={signOut}>SignOut</Link>}
           </div>
         </nav>   
         <Switch>
           
-          <Route exact path ='/' component ={User} />          
+          {/* <Route exact path ='/' component ={Home} />*/}
+          <Route exact path ='/user' component ={User} />        
           <Route exact path ='/seller' component ={Seller}/>
-          {/* <Route path = '/home' component ={Home} /> */}   
-          {/* <PrivateRoute path = '/protected' component = {Home}/>        */}
-          <PrivateRoute path = '/protected' component = {Dashboard}/>
+          {/* <Route path = '/home' component ={Home} /> */}  
           
+          <PrivateRoute path = '/protected' component = {Dashboard}/>
+          <PrivateRoute path = '/protected' component = {Home}/>       
         </Switch> 
         <Home/>
       </div>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import {useHistory} from 'react-router-dom'
 
@@ -17,18 +17,31 @@ export const Registration = () => {
        setCreds({...creds,[e.target.name]:e.target.value})
    }
 
-   //handleSubmit
+   
 
+   useEffect(()=>{
+    axiosWithAuth()    
+    .post("/api/register", creds)
+    .then(res=>{ console.log("I am the token for registration", res.data.token)
+     window.localStorage.setItem('token', res.data.token)
+     history.push('/protected')
+     
+ })
+   .catch(err=>console.log(err))
+    
+})
+
+  //handleSubmit
    const handleSubmit = (e) => {
        e.preventDefault()
-       axiosWithAuth()    
-       .post("/api/register", creds)
-       .then(res=>{ console.log("I am the token for registration", res.data.token)
-        window.localStorage.setItem('token', res.data.token)
-        history.push('/protected')
+    //    axiosWithAuth()    
+    //    .post("/api/register", creds)
+    //    .then(res=>{ console.log("I am the token for registration", res.data.token)
+    //     window.localStorage.setItem('token', res.data.token)
+    //     history.push('/protected')
         
-    })
-      .catch(err=>console.log(err))
+    // })
+    //   .catch(err=>console.log(err))
       setCreds({username:'',
         password: '',
         email:''})
