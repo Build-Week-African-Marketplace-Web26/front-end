@@ -104,16 +104,24 @@ color:black;
   font-size:1.2rem
 }
 .user-link{
-  padding: 6px;
   color:black;
   text-decoration: none;
   margin:0 auto 3% auto;
-  padding:2%;
-  border: black 1px solid;
+  padding:3%;
   width: 35%;
   border-radius: 8px;
-  background: rgb(255, 223, 193); 
+  background: #DC3900;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
 }
+
+.user-link:hover {
+  background: white;
+  color: #DC3900;
+}
+
 button{
   background: #ecf7e7;
   width: 8%;
