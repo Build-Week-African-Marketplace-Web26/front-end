@@ -5,8 +5,7 @@ import {Home} from './components/Home'
 import {PrivateRoute} from './components/PrivateRoute';
 import {connect} from 'react-redux'
 import {getItems} from './action';
-import {User} from './components/User';
-import {Seller} from './components/Seller';
+import {SignupOrLogin} from './components/SignupOrLogin.js';
 import './App.css';
 import styled from 'styled-components'; // ReactI (essien)
 import Footer from '../src/components/Footer'; // ReactI (essien)
@@ -24,6 +23,10 @@ const ReturnToSite = styled.a`
   width: 20%;
   font-size: 0.8rem;
   color: white;
+
+  &:hover {
+    color: #DC3900;
+  }
 `
 
 const WelcomeHeading = styled.h1`
@@ -53,18 +56,12 @@ function App({itemsList}) {
       <div className="App">
         <TopBar>
         <WelcomeHeading>Welcome to African Marketplace</WelcomeHeading>
-        <ReturnToSite href="">Back to Africa Marketplace Site</ReturnToSite>
+        <ReturnToSite href="">Back to SautiAfrica Site</ReturnToSite>
         </TopBar>
         <nav className ="nav">
           <LinkContainer>
             <div className = "linkDiv">
               <Link className = "appLink"to = '/home'>Home</Link>
-            </div>
-            <div className = "linkDiv">
-              <Link className = "appLink"to ='/'>Are you a customer?</Link>
-            </div>
-            <div className = "linkDiv">
-              <Link className = "appLink" to = '/seller'>Are you a seller?</Link>
             </div>
             <div className = "linkDiv">
             {<Link className = "appLink"to = '/protected'>Dashboard</Link>}
@@ -76,13 +73,11 @@ function App({itemsList}) {
         </nav>   
         <Switch>
           
-          <Route exact path ='/' component ={User} />          
-          <Route exact path ='/seller' component ={Seller}/>
-          {/* <Route path = '/home' component ={Home} /> */}
+          <Route exact path ='/' component ={SignupOrLogin} />          
+          <Route path = '/home' component ={Home} />
           <Route path = '/protected' component = {Dashboard}/>
           <Route path = '/protected' component = {Dashboard}/>
         </Switch> 
-        <Home/>
         <Footer />
       </div>
     </Router>

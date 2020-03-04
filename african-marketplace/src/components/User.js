@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-import ValidatedSignUpForm from './ValidatedSignUpForm';
+import FormikSignupForm from './ValidatedSignUpForm';
 import FormikLoginForm from './ValidatedLoginForm';
 import styled from 'styled-components';
 
@@ -23,7 +23,7 @@ export const User = () => {
                 </div>
 
                 <Switch>
-                    <Route path ='/signup' component ={ValidatedSignUpForm} />
+                    <Route path ='/signup' component ={FormikSignupForm} />
                     <Route path ='/signin' component ={FormikLoginForm}/>
                 </Switch>  
             </SellOrBuyContainer>

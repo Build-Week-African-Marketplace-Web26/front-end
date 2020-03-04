@@ -5,7 +5,12 @@ import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 import '../App.css';
+import '../index.css';
+import FormikSignupForm from './ValidatedSignUpForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
+//Styled Components (Essien)
 const LoginErrorMsg = styled.p`
     color: red;
 `
@@ -13,7 +18,7 @@ const LoginErrorMsg = styled.p`
 const SignupContainer = styled.div`
     background: rgba(0,0,0,0.8);
     position: absolute;
-    z-index: 99;
+    z-index: 98;
     width: 40%;
     height: 50vh;
     margin: 5% 28%;
@@ -28,24 +33,30 @@ const SignupCopy = styled.p`
     color: white;
 `
 
-function ValidatedLoginForm({ values, errors, touched, isSubmitting }) {
+function ValidatedLoginForm({ values, handleClick, errors, touched, isSubmitting }) {
+    handleClick = () => {
+        document.querySelector('.signup-container').style.display = 'none';
+    }
+    
   return (
-    <SignupContainer>
-     <SignupHeading>Already a member?</SignupHeading>
-     <SignupCopy>Please login!</SignupCopy>
-        <Form>
-            <div>
-                {touched.email && errors.email && <LoginErrorMsg>{errors.email}</LoginErrorMsg>}
-                <Field className="inputs" type="email" name="email" placeholder="email" />
-            </div>
-            <div>
-                {touched.password && errors.password && <LoginErrorMsg>{errors.password}</LoginErrorMsg>}
-                <Field className="inputs" type="password" name="password" placeholder="Password" />
-            </div>
-            <button className="signup-btn" disabled={isSubmitting}>Submit</button>
-        </Form>
-     </SignupContainer>
-  );
+    <SignupContainer className="signup-container">
+        <FontAwesomeIcon onClick={ handleClick } className="login-icons" icon={ faWindowClose } ></FontAwesomeIcon>
+        <SignupHeading>Already a member?</SignupHeading>
+        <SignupCopy>Please login!</SignupCopy>
+        
+            <Form>
+                <div>
+                    {touched.email && errors.email && <LoginErrorMsg>{errors.email}</LoginErrorMsg>}
+                    <Field className="inputs" type="email" name="email" placeholder="email" />
+                </div>
+                <div>
+                    {touched.password && errors.password && <LoginErrorMsg>{errors.password}</LoginErrorMsg>}
+                    <Field className="inputs" type="password" name="password" placeholder="Password" />
+                </div>
+                <button className="signup-btn" disabled={isSubmitting}>Submit</button>
+            </Form>
+    </SignupContainer>
+    );
 }
 
 const FormikLoginForm = withFormik({

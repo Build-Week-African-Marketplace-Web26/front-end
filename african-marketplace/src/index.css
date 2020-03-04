@@ -16,3 +16,12 @@ code {
   font-size: 1.3rem;
   margin:0 0.5%;
 }
+
+.login-icons {
+  position: relative;
+  z-index: 99;
+  color: white;
+  font-size: 2rem;
+  left: 54%;
+  bottom: 6vh;
+}

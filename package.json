@@ -9,6 +9,7 @@
     "email-validator": "^2.0.4",
     "formik": "^2.1.4",
     "react-hook-form": "^4.10.1",
+    "react-toggle-component": "^3.0.8",
     "styled-components": "^5.0.1",
     "yup": "^0.28.1"
   }

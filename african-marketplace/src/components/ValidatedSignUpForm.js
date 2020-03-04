@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
-import '../App.css'
+import '../App.css';
+import FormikLoginForm from './ValidatedLoginForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+
 
 const SignupErrorMsg = styled.p`
     color: red;
@@ -12,7 +16,7 @@ const SignupErrorMsg = styled.p`
 const SignupContainer = styled.div`
     background: rgba(0,0,0,0.8);
     position: absolute;
-    z-index: 99;
+    z-index: 97;
     width: 40%;
     height: 50vh;
     margin: 5% 28%;
@@ -28,9 +32,14 @@ const SignupCopy = styled.p`
 `
 
 
-function ValidatedSignUpForm({ values, errors, touched, isSubmitting }) {
+function ValidatedSignUpForm({ values, handleClick, errors, touched, isSubmitting }) {
+    handleClick = () => {
+        document.querySelector('.signup-container').style.display = 'none';
+    }
+
   return (
-    <SignupContainer>
+    <SignupContainer className="signup-container">
+     <FontAwesomeIcon onClick={ handleClick } className="login-icons" icon={ faWindowClose } ></FontAwesomeIcon>
      <SignupHeading>New to African Marketplace?</SignupHeading>
      <SignupCopy>Please create an account!</SignupCopy>
         <Form>
@@ -52,7 +61,7 @@ function ValidatedSignUpForm({ values, errors, touched, isSubmitting }) {
   );
 }
 
-const FormikLoginForm = withFormik({
+const FormikSignupForm = withFormik({
   mapPropsToValues({ name, email, password }) {
     return {
       name: name || "",
@@ -89,4 +98,4 @@ const FormikLoginForm = withFormik({
   }
 })(ValidatedSignUpForm);
 
-export default FormikLoginForm;
+export default FormikSignupForm;
