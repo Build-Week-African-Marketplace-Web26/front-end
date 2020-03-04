@@ -1,7 +1,7 @@
  import {GET, ADD, UPDATE, DELETE} from '../action';
 
  const initialState = {
-  itemsList: [],
+  itemsList:[],
   isLoading:false,
   error:false
  }
@@ -14,14 +14,14 @@
         case GET:
              return{
               ...state,
-              itemList: action.payload,
+              itemsList: action.payload,
               isLoading:true,
               error: false
              }
         case ADD:
             return{
                 ...state,
-              itemsList: action.payload,
+              itemsList: [...state.itemsList, action.payload],
               isLoading:true,
               error: false
             }
@@ -35,7 +35,7 @@
         case DELETE:
             return{
                 ...state,
-              itemsList: action.payload,
+              itemsList: [...state.itemsList,state.itemsList.length >0 && state.itemsList.filter(item=>item.id!==action.payload.id)],
               isLoading:true,
               error: false
             }

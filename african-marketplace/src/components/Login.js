@@ -4,7 +4,9 @@ import {useHistory} from 'react-router-dom'
 
 
 export const Login = () => {
-    let {history} = useHistory()
+    
+    let history = useHistory()
+
     const initialState = {
         username:'',
         password: ''
@@ -22,9 +24,9 @@ export const Login = () => {
    const handleSubmit = (e) => {
     e.preventDefault()
     axiosWithAuth()
-    .post("/login", creds)
+    .post("/api/login", creds)
     .then(res=>{ console.log("I am the token for login", res)
- //  window.locationStorage.setItem('token',something)
+     window.localStorage.setItem('token',res.data.token)
      history.push('/protected')
  })
    .catch(err=>console.log(err))

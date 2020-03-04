@@ -4,12 +4,12 @@ import {useHistory} from 'react-router-dom'
 
 
 export const Registration = () => {
-    let {history} = useHistory()
+    let history = useHistory()
 
-    const [creds, setCreds] = useState({
-        name: '',
+    const [creds, setCreds] = useState({        
         username:'',
-        password: ''
+        password: '',
+        email:''
     })
 
    //handleChanges
@@ -21,13 +21,17 @@ export const Registration = () => {
 
    const handleSubmit = (e) => {
        e.preventDefault()
-       axiosWithAuth()
-       .post("/register", creds)
-       .then(res=>{ console.log("I am the token for registration", res)
-    //  window.locationStorage.setItem('token',something)
+       axiosWithAuth()    
+       .post("/api/register", creds)
+       .then(res=>{ console.log("I am the token for registration", res.data.token)
+        window.localStorage.setItem('token', res.data.token)
         history.push('/protected')
+        
     })
       .catch(err=>console.log(err))
+      setCreds({username:'',
+        password: '',
+        email:''})
    }
     
     return(
@@ -35,15 +39,7 @@ export const Registration = () => {
             <p>New to African marketplace?</p>
             <p>Please create an account!</p>
         <form onSubmit = {handleSubmit}>
-            <div>
-                <input 
-                type ="text"
-                name = "name"
-                placeholder ="name"
-                value= {creds.name}
-                onChange = {handleChanges}
-                />
-            </div>
+           
             <div>
                 <input 
                 type ="text"
@@ -60,6 +56,15 @@ export const Registration = () => {
                 placeholder ="password"
                 value= {creds.password}
                 onChange = {handleChanges}                
+                />
+            </div>
+            <div>
+                <input 
+                type ="email"
+                name = "email"
+                placeholder ="email"
+                value= {creds.email}
+                onChange = {handleChanges}
                 />
             </div>
             

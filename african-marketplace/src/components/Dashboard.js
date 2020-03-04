@@ -1,12 +1,17 @@
 import React from'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-import {ProduceList} from "./products/produce/ProduceList";
-import {FoodList} from './products/foods/FoodList';
-import {ArtifactsList} from './products/artifacts/ArtifactsList';
-import {CraftsList} from './products/crafts/CraftsList';
+import Fruits from "./products/fruitsCato/Fruits"
+import Cereals from './products/cerealsCato/Cereals';
+import AnimalProducts from './products/animalCato/AnimalProducts'
+import Beans from './products/beansCato/Beans';
+import Vegetables from './products/vegetableCato/Vegetables'
+import Others from './products/othersCato/Others'
+import {getItems} from '../action'
+import {connect} from 'react-redux';
+import {Fruit} from './products/fruitsCato/Fruit'
 
 
-export const Dashboard = () => {
+const Dashboard = ({getItems}) => {
 
     return (
 
@@ -15,24 +20,35 @@ export const Dashboard = () => {
             <h1>Our products</h1>               
             
                 <div className ="dashDiv" >
-                <Link className ="dashLink"to = '/produce'>Produce</Link>
+                <Link className ="dashLink"to = '/animalproducts'>Animal Products</Link>
                 
-                 <Link className ="dashLink" to = '/foodStore'>FoodStore</Link>    
+                 <Link className ="dashLink" to = '/beans'>Beans</Link>    
                 
-                 <Link className ="dashLink" to = '/artifacts'>Traditional artifacts</Link>   
+                 <Link className ="dashLink" to = '/cereals'>Cereals</Link>   
                 
-                  <Link className ="dashLink"to = '/crafts'>Handmade Crafts </Link>     
+                  <Link className ="dashLink"to = '/fruits'> <div onClick = {getItems}>Fruits</div> </Link>  
+                  <Link className ="dashLink"to = '/vegetables'>Vegetables </Link> 
+                  <Link className ="dashLink"to = '/others'>Others</Link>    
                 </div>     
             
 
             <Switch>
-            <Route path ='/produce' component ={ProduceList} />
-            <Route path ='/foodStore' component ={FoodList}/>
-            <Route path ='/artifacts' component ={ArtifactsList} />
-            <Route path ='/crafts' component ={CraftsList}/>
-            </Switch>  
-            
+            <Route path ='/animalproducts' component ={AnimalProducts} />
+            <Route path ='/beans' component ={Beans}/>
+            <Route path ='/cereals' component ={Cereals} />
+            <Route path ='/fruits' component ={Fruits}/>
+            <Route path ='/vegetables' component ={Vegetables}/>
+            <Route path ='/others' component ={Others}/>
+            </Switch>            
         </div>
     </Router>
     )
 }
+
+const mapStateToProps = (state)=>{
+    return{        
+    itemsList: state.itemsList
+    }
+  }
+
+export default connect(mapStateToProps,{getItems})(Dashboard);

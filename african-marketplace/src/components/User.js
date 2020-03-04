@@ -18,8 +18,7 @@ export const User = () => {
 
                 <Switch>
                 <Route path ='/signup' component ={Registration} />
-                <Route path ='/signin' component ={Login}/>
-               
+                <Route path ='/signin' component ={Login}/>               
                 </Switch> 
                               
             </div>
