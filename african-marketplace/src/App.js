@@ -13,7 +13,7 @@ import Footer from '../src/components/Footer'; // ReactI (essien)
 
 // Styled Components - ReactI - ESSIEN
 const TopBar = styled.div`
-  // background: lightskyblue;
+  background: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,10 +23,20 @@ const ReturnToSite = styled.a`
   font-weight: 700;
   width: 20%;
   font-size: 0.8rem;
+  color: white;
 `
 
 const WelcomeHeading = styled.h1`
   font-size: 1.5rem;
+  color: white;
+`
+const LinkContainer = styled.div`
+  display:flex;
+  justify-content: space-between;
+  position: relative;
+  left: 37.5%;
+  width: 50%;
+  padding: 1% 2%;
 `
 
 
@@ -46,21 +56,23 @@ function App({itemsList}) {
         <ReturnToSite href="">Back to Africa Marketplace Site</ReturnToSite>
         </TopBar>
         <nav className ="nav">
-        <div className = "linkDiv">
-            <Link className = "appLink"to = '/home'>Home</Link>
-          </div>
-          <div className = "linkDiv">
-            <Link className = "appLink"to ='/'>Are you a customer?</Link>
-          </div>
-          <div className = "linkDiv">
-            <Link className = "appLink" to = '/seller'>Are you a seller?</Link>
-          </div>
-          <div className = "linkDiv">
-           {<Link className = "appLink"to = '/protected'>Dashboard</Link>}
-          </div>
-          <div className = "linkDiv">
-           {<Link className = "appLink" to = "/" onClick ={signOut}>SignOut</Link>}
-          </div>
+          <LinkContainer>
+            <div className = "linkDiv">
+              <Link className = "appLink"to = '/home'>Home</Link>
+            </div>
+            <div className = "linkDiv">
+              <Link className = "appLink"to ='/'>Are you a customer?</Link>
+            </div>
+            <div className = "linkDiv">
+              <Link className = "appLink" to = '/seller'>Are you a seller?</Link>
+            </div>
+            <div className = "linkDiv">
+            {<Link className = "appLink"to = '/protected'>Dashboard</Link>}
+            </div>
+            <div className = "linkDiv">
+            {<Link className = "appLink" to = "/" onClick ={signOut}>SignOut</Link>}
+            </div>
+          </LinkContainer>
         </nav>   
         <Switch>
           

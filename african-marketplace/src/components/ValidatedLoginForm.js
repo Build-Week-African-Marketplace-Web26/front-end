@@ -4,28 +4,47 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
+import '../App.css';
 
 const LoginErrorMsg = styled.p`
     color: red;
 `
 
+const SignupContainer = styled.div`
+    background: rgba(0,0,0,0.8);
+    position: absolute;
+    z-index: 99;
+    width: 40%;
+    height: 50vh;
+    margin: 5% 28%;
+    border-radius: 10px;
+    padding: 2%;
+`
+
+const SignupHeading = styled.h3`
+    color: white;
+`
+const SignupCopy = styled.p`
+    color: white;
+`
+
 function ValidatedLoginForm({ values, errors, touched, isSubmitting }) {
   return (
-    <div>
-     <p>Already a member?</p>
-     <p>Please login!</p>
+    <SignupContainer>
+     <SignupHeading>Already a member?</SignupHeading>
+     <SignupCopy>Please login!</SignupCopy>
         <Form>
             <div>
                 {touched.email && errors.email && <LoginErrorMsg>{errors.email}</LoginErrorMsg>}
-                <Field type="email" name="email" placeholder="email" />
+                <Field className="inputs" type="email" name="email" placeholder="email" />
             </div>
             <div>
                 {touched.password && errors.password && <LoginErrorMsg>{errors.password}</LoginErrorMsg>}
-                <Field type="password" name="password" placeholder="Password" />
+                <Field className="inputs" type="password" name="password" placeholder="Password" />
             </div>
-            <button disabled={isSubmitting}>Submit</button>
+            <button className="signup-btn" disabled={isSubmitting}>Submit</button>
         </Form>
-    </div>
+     </SignupContainer>
   );
 }
 
