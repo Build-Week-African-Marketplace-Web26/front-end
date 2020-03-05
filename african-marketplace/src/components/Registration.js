@@ -1,49 +1,32 @@
 import React, {useState} from 'react';
-import {axiosWithAuth} from '../utils/axiosWithAuth'
-import {useHistory} from 'react-router-dom'
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {registration} from '../action';
 
+const Registration = (props) => {    
 
-export const Registration = () => {
-    let {history} = useHistory()
-
-    const [creds, setCreds] = useState({
-        name: '',
-        username:'',
-        password: ''
+    const [creds, setCreds] = useState({  
+        
     })
-
-   //handleChanges
+   
    const handleChanges = (e) => {
        setCreds({...creds,[e.target.name]:e.target.value})
    }
 
-   //handleSubmit
-
    const handleSubmit = (e) => {
-       e.preventDefault()
-       axiosWithAuth()
-       .post("/register", creds)
-       .then(res=>{ console.log("I am the token for registration", res)
-    //  window.locationStorage.setItem('token',something)
-        history.push('/protected')
-    })
-      .catch(err=>console.log(err))
-   }
+    e.preventDefault()
+   props.registration(creds,props)
+   .then(()=>props.history.push("/dashboard"))
+    .catch(err=>console.log(err))    
+   
+  }
     
     return(
-        <div>
+        <div className = "login">
             <p>New to African marketplace?</p>
             <p>Please create an account!</p>
         <form onSubmit = {handleSubmit}>
-            <div>
-                <input 
-                type ="text"
-                name = "name"
-                placeholder ="name"
-                value= {creds.name}
-                onChange = {handleChanges}
-                />
-            </div>
+           
             <div>
                 <input 
                 type ="text"
@@ -62,12 +45,22 @@ export const Registration = () => {
                 onChange = {handleChanges}                
                 />
             </div>
+            <div>
+                <input 
+                type ="email"
+                name = "email"
+                placeholder ="email"
+                value= {creds.email}
+                onChange = {handleChanges}
+                />
+            </div>
             
-            <button type = "submit">Register here</button>                
+            <button className = "buttn" type = "submit">Register here</button>                
         </form>
 
-
+        <Link className ="reg" to = "/"> Already have an account?</Link>
     </div> 
 
     )
 }
+export default connect(null, {registration})(Registration)

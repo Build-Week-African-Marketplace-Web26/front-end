@@ -1,39 +1,33 @@
 import React,{useState} from 'react';
-import {axiosWithAuth} from '../utils/axiosWithAuth'
-import {useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {login} from '../action';
 
-
-export const Login = () => {
-    let {history} = useHistory()
-    const initialState = {
-        username:'',
-        password: ''
-    }
-
-    const [creds, setCreds] = useState(initialState)
-
-   //handleChanges
-    const handleChanges = (e) => {
+ const Login = (props) => {
+   
+    const [creds, setCreds] = useState({})
+     
+    const handleChanges = e => {
     setCreds({...creds,[e.target.name]:e.target.value})
    }
 
-   //handleSubmit
-
-   const handleSubmit = (e) => {
-    e.preventDefault()
-    axiosWithAuth()
-    .post("/login", creds)
-    .then(res=>{ console.log("I am the token for login", res)
- //  window.locationStorage.setItem('token',something)
-     history.push('/protected')
- })
-   .catch(err=>console.log(err))
-    setCreds(initialState)
-   }
+    const handleSubmit = e => {
+        e.preventDefault()
+        props.login(creds)
+        .then(res => {
+            // console.log('Res: ', res)
+            props.history.push('/dashboard')
+        })
+        .catch(err => {
+            console.log('Error: ', err)
+        })
+    }
 
     return(
-        <div>
-            <p>Already a member?</p>
+        
+        <div  className = "login">
+          
+            <Link className ="reg" to = "/registration">Need an account?</Link>
             <p>Please login!</p>
         <form onSubmit = {handleSubmit}>
             <div>
@@ -54,7 +48,7 @@ export const Login = () => {
                 onChange = {handleChanges}
                 />
             </div>
-            <button type = "submit">Login</button>                
+            <button className = "buttn" type = "submit">Login</button>                
         </form>
 
 
@@ -62,3 +56,4 @@ export const Login = () => {
 
     )
 }
+export default connect(null,{login})(Login)

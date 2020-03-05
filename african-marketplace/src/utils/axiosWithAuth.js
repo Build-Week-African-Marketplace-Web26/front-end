@@ -6,7 +6,7 @@ export const axiosWithAuth = () => {
         headers: {
             authorization: token
         },
+        baseURL: `https://production-node-express-review.herokuapp.com/`       
         
-        baseURL: 'https://build-african-marketplace.herokuapp.com/'
     });   
 };

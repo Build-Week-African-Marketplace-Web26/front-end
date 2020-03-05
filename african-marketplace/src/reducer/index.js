@@ -1,7 +1,7 @@
- import {GET, ADD, UPDATE, DELETE} from '../action';
+ import {GET, ADD, UPDATE, DELETE, LOADING, LOGIN_SUCCESS,REGISTER_SUCCESS} from '../action';
 
  const initialState = {
-  itemsList: [],
+  itemsList:[],
   isLoading:false,
   error:false
  }
@@ -11,17 +11,32 @@
      console.log("I am the action", action)
      //console.log("I am the state", state)
      switch(action.type){
+      case LOADING:
+        return{
+         ...state,
+         isLoading: true
+        }
+        case REGISTER_SUCCESS:
+          return{
+           ...state,
+          isLoading:false
+          }
+        case LOGIN_SUCCESS:
+             return{
+              ...state,
+             isLoading:false
+             }
         case GET:
              return{
               ...state,
-              itemList: action.payload,
+              itemsList: action.payload,
               isLoading:true,
               error: false
              }
         case ADD:
             return{
                 ...state,
-              itemsList: action.payload,
+              itemsList: [...state.itemsList, action.payload],
               isLoading:true,
               error: false
             }
@@ -35,7 +50,7 @@
         case DELETE:
             return{
                 ...state,
-              itemsList: action.payload,
+              itemsList: [...state.itemsList, state.itemsList.length >0 && state.itemsList.filter(item=>item.id!==action.payload.id)],
               isLoading:true,
               error: false
             }
