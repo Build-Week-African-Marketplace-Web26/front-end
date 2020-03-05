@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Fruit} from './Fruit';
 import Form from '../../Form'
 
+
  const Fruits = ({deleteItem,updateItem, itemsList}) => {
     console.log("I am the itemsList", itemsList)
 

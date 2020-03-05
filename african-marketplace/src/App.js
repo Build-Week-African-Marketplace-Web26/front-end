@@ -6,6 +6,7 @@ import {PrivateRoute} from './components/PrivateRoute';
 import Login from './components/Login';
 import Registration from './components/Registration'
 import Header from './components/Header';
+// import Fruits from './components/products/fruitsCato/Fruits'
 import './App.css';
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
           <Route exact path ='/' component ={Login}/> 
           <Route path ='/registration' component ={Registration}/>                
           <PrivateRoute path = '/dashboard' component = {Dashboard}/>
+         
           <PrivateRoute path = '/home' component = {Home}/> 
               
       </div>        

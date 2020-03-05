@@ -10,7 +10,7 @@ export const Fruit = ({item, deleteItem, updateItem}) => {
             <h3>Title:{item.title}</h3>
             <h4>Body:{item.body}</h4>
             <button onClick = {deleteItem}>X</button>
-            {/* <button onClick = {e => e.stopPropagation(),updateItem}>edit</button> */}
+            <button onClick = {updateItem}>edit</button>
         </div>
        
     )
