@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {registration} from '../action';
 
 const Registration = (props) => {    
@@ -21,7 +22,7 @@ const Registration = (props) => {
   }
     
     return(
-        <div>
+        <div className = "login">
             <p>New to African marketplace?</p>
             <p>Please create an account!</p>
         <form onSubmit = {handleSubmit}>
@@ -54,10 +55,10 @@ const Registration = (props) => {
                 />
             </div>
             
-            <button type = "submit">Register here</button>                
+            <button className = "buttn" type = "submit">Register here</button>                
         </form>
 
-
+        <Link className ="reg" to = "/"> Already have an account?</Link>
     </div> 
 
     )

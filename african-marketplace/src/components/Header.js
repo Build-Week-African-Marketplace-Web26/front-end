@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 export default function Header(props) {
  
-    const logOut =()=>{
+    const logout =()=>{
         localStorage.removeItem("token")
         props.history.push('/')
     }
@@ -14,7 +14,8 @@ export default function Header(props) {
     return (
 
      <div className ="header">
-      {localStorage.getItem("token") ? <button onClick = {logOut}>logOut</button>:null}
+        
+      {localStorage.getItem("token") ? <button onClick = {logout}>logout</button>:null}
      </div>        
     )
 }

@@ -25,7 +25,7 @@ const Dashboard = ({getItems}) => {
                 
                  <Link className ="dashLink" to = '/cereals'>Cereals</Link>   
                 
-                  <Link className ="dashLink"to = '/fruits'><div onClick = {getItems}></div>Fruits</Link>  
+                  <Link className ="dashLink"to = '/fruits'onClick = {getItems}> Fruits</Link>  
                   <Link className ="dashLink"to = '/vegetables'>Vegetables </Link> 
                   <Link className ="dashLink"to = '/others'>Others</Link>    
                 </div>     

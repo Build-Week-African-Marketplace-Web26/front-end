@@ -46,8 +46,8 @@ export const login = user => dispatch => {
 export const getItems = () => dispatch => {
     axiosWithAuth()     
     .get("https://jsonplaceholder.typicode.com/posts")
-    .then(res =>console.log("I am the list", res))
-    // .then(res =>dispatch({type:GET, payload:res.data }))
+    // .then(res =>console.log("I am the list", res))
+    .then(res =>dispatch({type:GET, payload:res.data }))
     .catch(err=> console.log(err))
 }
 
@@ -79,8 +79,8 @@ export const addItem = (item) => (dispatch) => {
 export const deleteItem = (item) => (dispatch)=>{
      axiosWithAuth() 
     .delete(`https://jsonplaceholder.typicode.com/posts/${item.id}`)
-    .then(res=>console.log('I am the response from deleted item', res))
-    // .then(res => dispatch({type:DELETE, payload:res.data}))
+    // .then(res=>console.log('I am the response from deleted item', res))
+    .then(res => dispatch({type:DELETE, payload:res.data}))
     .catch(err => console.log(err))
 }
 
