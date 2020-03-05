@@ -6,9 +6,8 @@ import AnimalProducts from './products/animalCato/AnimalProducts'
 import Beans from './products/beansCato/Beans';
 import Vegetables from './products/vegetableCato/Vegetables'
 import Others from './products/othersCato/Others'
-import {getItems} from '../action'
 import {connect} from 'react-redux';
-import {Fruit} from './products/fruitsCato/Fruit'
+import {getItems} from '../action'
 
 
 const Dashboard = ({getItems}) => {
@@ -26,7 +25,7 @@ const Dashboard = ({getItems}) => {
                 
                  <Link className ="dashLink" to = '/cereals'>Cereals</Link>   
                 
-                  <Link className ="dashLink"to = '/fruits'> <div onClick = {getItems}>Fruits</div> </Link>  
+                  <Link className ="dashLink"to = '/fruits'><div onClick = {getItems}></div>Fruits</Link>  
                   <Link className ="dashLink"to = '/vegetables'>Vegetables </Link> 
                   <Link className ="dashLink"to = '/others'>Others</Link>    
                 </div>     

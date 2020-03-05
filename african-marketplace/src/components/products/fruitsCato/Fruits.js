@@ -11,8 +11,6 @@ import Form from '../../Form'
 
         <div>
             <h2>Our fruitshop</h2>
-            
-
             {/* <button onClick ={addItem}>Add Items</button> */}
             {/* <button onClick ={deleteItem}>Delete Items</button> */}
             <div>

@@ -1,51 +1,24 @@
-import React, {useState, useEffect} from 'react';
-import {axiosWithAuth} from '../utils/axiosWithAuth'
-import {useHistory} from 'react-router-dom'
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import {registration} from '../action';
 
+const Registration = (props) => {    
 
-export const Registration = () => {
-    let history = useHistory()
-
-    const [creds, setCreds] = useState({        
-        username:'',
-        password: '',
-        email:''
+    const [creds, setCreds] = useState({  
+        
     })
-
-   //handleChanges
+   
    const handleChanges = (e) => {
        setCreds({...creds,[e.target.name]:e.target.value})
    }
 
-   
-
-   useEffect(()=>{
-    axiosWithAuth()    
-    .post("/api/register", creds)
-    .then(res=>{ console.log("I am the token for registration", res.data.token)
-     window.localStorage.setItem('token', res.data.token)
-     history.push('/protected')
-     
- })
-   .catch(err=>console.log(err))
-    
-})
-
-  //handleSubmit
    const handleSubmit = (e) => {
-       e.preventDefault()
-    //    axiosWithAuth()    
-    //    .post("/api/register", creds)
-    //    .then(res=>{ console.log("I am the token for registration", res.data.token)
-    //     window.localStorage.setItem('token', res.data.token)
-    //     history.push('/protected')
-        
-    // })
-    //   .catch(err=>console.log(err))
-      setCreds({username:'',
-        password: '',
-        email:''})
-   }
+    e.preventDefault()
+   props.registration(creds,props)
+   .then(()=>props.history.push("/dashboard"))
+    .catch(err=>console.log(err))    
+   
+  }
     
     return(
         <div>
@@ -89,3 +62,4 @@ export const Registration = () => {
 
     )
 }
+export default connect(null, {registration})(Registration)
