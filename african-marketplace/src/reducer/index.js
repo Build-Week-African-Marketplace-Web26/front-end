@@ -50,7 +50,7 @@
         case DELETE:
             return{
                 ...state,
-              itemsList: [...state.itemsList, state.itemsList.length >0 && state.itemsList.filter(item=>item.id!==action.payload.id)],
+             
               isLoading:true,
               error: false
             }

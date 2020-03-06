@@ -4,23 +4,22 @@ import {connect} from 'react-redux';
 
 
 const UpdateForm = ({updateItem, itemsList}) => {
- const [form, setForm] = useState({
-     id: "",
+ const [updateForm, setUpdateForm] = useState({     
      title: "",
      body:""
  })
 //handleChanges
  const handleChanges = (e) => {
-     setForm({...form,[e.target.name]:e.target.value})
+     setUpdateForm({...updateForm,[e.target.name]:e.target.value})
  }
 
 //handleSubmit
 
  const handleSubmit = (e) => {
      e.preventDefault()
-     updateItem(form)     
+     updateItem(updateForm)     
     //  console.log(form)
-    setForm({title:"", body: ""})
+    setUpdateForm({title:"", body: ""})
  }
 
     return(
@@ -31,7 +30,7 @@ const UpdateForm = ({updateItem, itemsList}) => {
                     type ="text"
                     name = "title"
                     placeholder ="title"
-                    value= {form.title}
+                    value= {updateForm.title}
                     onChange = {handleChanges}
                     />
                 </div>
@@ -41,7 +40,7 @@ const UpdateForm = ({updateItem, itemsList}) => {
                     type ="text"
                     name = "body"
                     placeholder ="body"
-                    value= {form.body}
+                    value= {updateForm.body}
                     onChange = {handleChanges}
                     />
                 </div>
