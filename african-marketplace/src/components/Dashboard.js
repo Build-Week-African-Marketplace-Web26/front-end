@@ -1,4 +1,4 @@
-import React from'react';
+import React, { useState, useEffect } from'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import {ProduceList} from "./products/produce/ProduceList";
 import {FoodList} from './products/foods/FoodList';
@@ -7,9 +7,21 @@ import {CraftsList} from './products/crafts/CraftsList';
 import Pricing from './Pricing';
 import Profile from './Profile';
 import '../App.css';
+import axios from 'axios';
 
 
 export const Dashboard = () => {
+    const [prod, setProd] = useState([]);
+
+    useEffect(() => {
+        axios.get('https://build-african-marketplace.herokuapp.com/api/locations')
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log('data not returned', error);
+    });
+    }, []);
 
     return (
     <Router>
