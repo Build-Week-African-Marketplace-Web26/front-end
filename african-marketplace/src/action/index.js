@@ -26,8 +26,6 @@ export const registration = user => dispatch => {
     }
 )}
 
-
-
 export const login = user => dispatch => {
     return new Promise((resolve, reject) => {
         dispatch({type:"LOADING"})
@@ -35,13 +33,11 @@ export const login = user => dispatch => {
             .post(`https://production-node-express-review.herokuapp.com/api/login`, user)
             .then(res => {
                 dispatch({type:"LOGIN_SUCCESS"})
-                window.localStorage.setItem('token',res.data.token)
+                window.localStorage.setItem('token', res.data.token)
                 resolve(res)
             })
             .catch(err => reject(err))    
-})} 
-    
-    
+})}    
 
 export const getItems = () => dispatch => {
     axiosWithAuth()     
@@ -64,9 +60,9 @@ export const addItem = (item) => (dispatch) => {
 
 //-----------------------------------
 
-  export const updateItem = (item) => {
+  export const updateItem = (id,item) => {
    axiosWithAuth()
-  .put(`/${item.id}`, item)
+  .put(`https://jsonplaceholder.typicode.com/posts/100`,item)
   .then(res => console.log("I am the response from updated item", res))
   //.then(res => dispatch({type:UPDATE, payload:}))
   .catch(err => console.log(err))
@@ -76,11 +72,16 @@ export const addItem = (item) => (dispatch) => {
 
 //.delete request to delete the items
 
-export const deleteItem = (item) => (dispatch)=>{
+export const deleteItem = (id) => (dispatch)=>{
      axiosWithAuth() 
-    .delete(`https://jsonplaceholder.typicode.com/posts/${item.id}`)
-    // .then(res=>console.log('I am the response from deleted item', res))
-    .then(res => dispatch({type:DELETE, payload:res.data}))
+    .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then(res=>console.log('I am the response from deleted item', res))
+    // .then(res => dispatch({type:DELETE}))
+   .then(res=> axiosWithAuth()     
+   .get("https://jsonplaceholder.typicode.com/posts")
+   // .then(res =>console.log("I am the list", res))
+   .then(res =>dispatch({type:GET, payload:res.data }))
+   .catch(err=> console.log(err)))
     .catch(err => console.log(err))
 }
 
