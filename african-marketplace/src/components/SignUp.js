@@ -3,24 +3,24 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
-import './login.css';
-import FormikSignupForm from './SignUp';
 import img from './image/eggselling.png';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect, useHistory, useLocation } from 'react-router-dom';
+import './signup.css';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { Dashboard } from './Dashboard';
 
-const LoginErrorMsg = styled.p`
+const SignupErrorMsg = styled.p`
     color: red;
 `
-
-const SignupContBg = styled.div`
-    background-image: url(${ img });
+const SignupContainer = styled.div`
+    background: url(${ img });
     background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
-    filter: blur(5px);
+    background-repeat: no-repeat;
+    width: 100%;
     height: 100vh;
+    filter: blur(5px);
 `
+
 const SignupInner = styled.div`
   position: absolute;
   top: 9.3%;
@@ -29,57 +29,63 @@ const SignupInner = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
 `;
 
-const GoSignUp = styled.h2`
-  color: white;
+const SignupHeading = styled.h2`
+    color: white;
 `;
 
-function Login({ values, handleClick, errors, touched, isSubmitting }) {
+function SignUp({ values, handleClick, errors, touched, isSubmitting }) {
     handleClick = () => {
         document.querySelector('.signup-container').style.display = 'none';
     }
-    
+
   return (
     <Router>
       <section>
-        <SignupContBg></SignupContBg>
+        <SignupContainer />
           <SignupInner>
-            <GoSignUp>Not Yet a Vendor? <Link className="vendor-signup" to="/sign-up">Sign Up.</Link></GoSignUp>          
-                <Form className="form">
+            <SignupHeading>Already a Vendor? <Link className="vendor-signup" to="/sign-up">Log In.</Link></SignupHeading>
+                <Form className="signup-form">
                     <div>
-                        {touched.email && errors.email && <LoginErrorMsg>{errors.email}</LoginErrorMsg>}
+                        {touched.name && errors.name && <SignupErrorMsg>{errors.name}</SignupErrorMsg>}
+                        <Field className="inputs" type="text" name="name" placeholder="name" />
+                    </div>
+                    <div>
+                        {touched.email && errors.email && <SignupErrorMsg>{errors.email}</SignupErrorMsg>}
                         <Field className="inputs" type="email" name="email" placeholder="email" />
                     </div>
                     <div>
-                        {touched.password && errors.password && <LoginErrorMsg>{errors.password}</LoginErrorMsg>}
+                        {touched.password && errors.password && <SignupErrorMsg>{errors.password}</SignupErrorMsg>}
                         <Field className="inputs" type="password" name="password" placeholder="Password" />
                     </div>
-                    <Link exact to="/dashboard">
-                    <button className="signup-btn" disabled={isSubmitting}>Submit</button>
+                    <Link to="/dashboard">
+                      <button className="signup-btn" disabled={isSubmitting}>Submit</button>
                     </Link>
                 </Form>
           </SignupInner>
+          <Switch>
+            <Route exact path="/dashboard" component={ Dashboard } />
+          </Switch>
       </section>
-      <Switch>
-        <Route exact path="/sign-up" component={ FormikSignupForm } />
-        <Route exact path="/dashboard" component={ Dashboard } />
-      </Switch>
     </Router>
-    );
+  );
 }
 
-const FormikLoginForm = withFormik({
-  mapPropsToValues({ email, password }) {
+const FormikSignupForm = withFormik({
+  mapPropsToValues({ name, email, password }) {
     return {
+      name: name || "",
       email: email || "",
       password: password || ""
     };
   },
   validationSchema: Yup.object().shape({
+    name: Yup.string()
+      .required("Name is required"),
     email: Yup.string()
       .email("Email not valid")
       .required("Email is required"),
@@ -99,11 +105,11 @@ const FormikLoginForm = withFormik({
           setSubmitting(false);
         })
         .catch(err => {
-          console.log(err); // There was an error creating the d ata and logs to console
+          console.log(err); // There was an error creating the data and logs to console
           setSubmitting(false);
         });
     }
   }
-})(Login);
+})(SignUp);
 
-export default FormikLoginForm;
+export default FormikSignupForm;

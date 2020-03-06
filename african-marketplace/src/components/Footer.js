@@ -1,16 +1,17 @@
-// (ESSIEN)
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons'
-import '../index.css'
 
 const FooterCopy = styled.div`
     font-size: 0.8rem;
-    padding: 2% 0 1%;
+    padding: 2%;
     background: black;
+    text-align: center;
+    position: relative;
+    z-index: 3;
 `
 const FooterHeading = styled.h4`
     font-size: 1.2rem;
@@ -23,7 +24,7 @@ const FooterText = styled.p`
     color: white;
 `
 const FooterIcons = styled.div`
-    margin: 1% 0 0.5%;
+    margin: 0.8% 0 0.3%;
     color: white;
 `
 

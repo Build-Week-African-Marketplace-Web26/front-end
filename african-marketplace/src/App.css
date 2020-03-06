@@ -64,36 +64,28 @@
   color: black;
 }
 
+ /* Dashboard Styles */
+ .dash-cont {
+   background:rgba(0,0,0,0.1);
+   display: flex;
+ }
 
-.dashDiv{
-  background-image: linear-gradient(
-      rgba(43, 42, 42, 0.2),
-      rgba(43, 42, 32, 0.2)
-    ),
-
-    url("./components/image/foodselling.jpg");
-   
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  min-height: 80vh;
-  background-position: unset;
+.dash-link-cont{
   display:flex;
-  justify-content: space-between;
-  flex-direction: column;  
+  flex-direction: column;
+  width: 15%;
+  height: 100vh;
+  background: white;
 }
 
 .dashLink{
-width:20%;
-background: rgb(209, 180, 150);
-padding:2%;
-margin:2%;
-border-radius: 8px;
-font-size:1.2rem;
-margin-left:40%;
-border: black 2px solid;
-text-decoration: none;
-color:black;
+  font-size:1rem;
+  margin: 4% 0;
+  color:#DC3900;
+}
+
+.dashLink:hover {
+  color: black;
 }
 
 .navDiv{
@@ -184,32 +176,4 @@ margin: 0 auto;
 
 .blank{
 height:38vh;
-}
-
-/* Essien */
-.inputs {
-  width: 50%;
-  margin: 2% 0;
-  font-size: 1.3rem;
-  padding: 1%;
-  border-radius: 6px;
-  border: none;
-}
-
-/* Essien */
-.signup-btn {
-  width: 30%;
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: 1.75%;
-  margin-top: 5%;
-  background: #DC3900;
-  color: white;
-  border: none;
-}
-
-.signup-btn:hover {
-  background: white;
-  color: #DC3900;
 }

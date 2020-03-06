@@ -1,11 +1,11 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import {Dashboard} from './components/Dashboard';
-import {Home} from './components/Home'
+import {Home} from './components/Welcome'
 import {PrivateRoute} from './components/PrivateRoute';
 import {connect} from 'react-redux'
 import {getItems} from './action';
-import {SignupOrLogin} from './components/SignupOrLogin.js';
+import {SignupOrLogin} from './components/SignUp.js/index.js';
 import './App.css';
 import styled from 'styled-components'; // ReactI (essien)
 import Footer from '../src/components/Footer'; // ReactI (essien)
@@ -17,6 +17,8 @@ const TopBar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 10%;
+  position: relative;
+  z-index: 98;
 `
 const ReturnToSite = styled.a`
   font-weight: 700;
@@ -37,8 +39,8 @@ const LinkContainer = styled.div`
   display:flex;
   justify-content: space-between;
   position: relative;
-  left: 37.5%;
-  width: 50%;
+  left: 55%;
+  width: 30%;
   padding: 1% 2%;
 `
 
