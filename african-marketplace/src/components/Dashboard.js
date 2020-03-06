@@ -14,9 +14,9 @@ export const Dashboard = () => {
     const [prod, setProd] = useState([]);
 
     useEffect(() => {
-        axios.get('https://build-african-marketplace.herokuapp.com/api/locations')
+        axios.get("https://build-african-marketplace.herokuapp.com/api/items")
             .then(response => {
-                console.log(response)
+                console.log(response.data)
             })
             .catch(error => {
                 console.log('data not returned', error);
